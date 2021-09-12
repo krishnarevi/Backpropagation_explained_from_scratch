@@ -1,14 +1,11 @@
 # Training of Feed-Forward Neural Networks
 
-   Learning in feed-forward networks belongs to the realm of supervised learning, in which pairs of input and output values are fed into the network for many cycles, so that the network 'learns' the relationship between the input and output.
-   
+Learning in feed-forward networks belongs to the realm of supervised learning, in which pairs of input and output values are fed into the network for many cycles, so that the network 'learns' the relationship between the input and output.
+
 Let's consider a simple neural network, as shown below.
-   <p align="center" style="padding: 10px">
-    <img alt="Forwarding" src="https://github.com/krishnarevi/TSAI_END2.0_Session2/blob/main/plots/Feedforward_Network.PNG?raw=true" width =500>
-    <br>
-    <em style="color: grey">Figure 1.a : A simple feed-forward neural network</em>
-  </p> 
-  
+
+![Feedforward_Network](README.assets/Feedforward_Network.PNG)
+
 Where,
 
 <b>Node</b>: The basic unit of computation (represented by a single circle)
@@ -21,7 +18,7 @@ Where,
 
 <b>a_h</b>: Hidden node activated (the value of the hidden node passed to a predefined function)
 
-<b>o</b>: Outut node (A weighted sum of the last hidden layer)
+<b>o</b>: Output node (A weighted sum of the last hidden layer)
 
 <b>a_o</b>: Output node activated (the neural network output, the value of an output node passed to a predefined function)
 
@@ -33,7 +30,7 @@ Where,
 The following are the steps that execute during training phase of above neural network:<br>
 ### Step 1: Initialization
 
-The first step after designing a neural network is initialization. Initialize all weights W1 through W8 with random values.Also , assume  all bias values as zero for simplicity 
+The first step after designing a neural network is initialization. Initialize all weights W1 through W8 with random values. Also , assume  all bias values as zero for simplicity 
 
 ### Step 2: Feed-Forward<br>
 In this step, calculate all the values for the hidden layers and output layers and move forward in the network
@@ -50,15 +47,15 @@ Consider input values as i1=0.05, i2=0.1 and target values as t1=0.01,t2 =0.99 t
    <a href="https://www.codecogs.com/eqnedit.php?latex=h2=w3*i1&plus;w4*i2" target="_blank" ><img src="https://latex.codecogs.com/gif.latex?h2=w3*i1&plus;w4*i2" title="h2=w3*i1+w4*i2" /></a>
       <br>
  </p> 
-   
-•	Select an activation function.For example, Sigmoid function:
+
+•	Select an activation function. For example, Sigmoid function:
 
 <p align="center" >
 <a href="https://www.codecogs.com/eqnedit.php?latex=\sigma&space;(x)=\frac{1}{1&plus;exp^{-x}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\sigma&space;(x)=\frac{1}{1&plus;exp^{-x}}" title="\sigma (x)=\frac{1}{1+exp^{-x}}" /></a>
 <br>
 </p> 
    
-   
+
 •	Calculate hidden node activation values:
 
 <p align="center" >
@@ -69,7 +66,7 @@ Consider input values as i1=0.05, i2=0.1 and target values as t1=0.01,t2 =0.99 t
    <a href="https://www.codecogs.com/eqnedit.php?latex=a\_h2=\sigma(h2)&space;=\frac{1}{1&plus;exp^{-h2}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a\_h2=\sigma(h2)&space;=\frac{1}{1&plus;exp^{-h2}}" title="a\_h2=\sigma(h2) =\frac{1}{1+exp^{-h2}}" /></a>
 <br>
 </p>
-  
+
 •	Calculate output node values:
 <p align="center" >
 <a href="https://www.codecogs.com/eqnedit.php?latex=o1=w5*a\_h1&plus;w6*a\_h2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?o1=w5*a\_h1&plus;w6*a\_h2" title="o1=w5*a\_h1+w6*a\_h2" /></a> 
@@ -114,7 +111,7 @@ Consider input values as i1=0.05, i2=0.1 and target values as t1=0.01,t2 =0.99 t
 
 After the first pass, the error will be substantial, backpropagation adjusts the weights to reduce the error between the output of the network and the target values 
 ### Step 3: Backpropagation
-The goal of this step is to incrementally adjust the weights for the network to produce values as close as possible to the target values.Backpropagation can adjust the network weights using the stochastic gradient decent optimization method.
+The goal of this step is to incrementally adjust the weights for the network to produce values as close as possible to the target values. Backpropagation can adjust the network weights using the stochastic gradient decent optimization method.
 
 <p align="center" >
 <a href="https://www.codecogs.com/eqnedit.php?latex=W_{i}^{k&plus;1}=W_{i}^{k}-\eta&space;\frac{\partial&space;E}{\partial&space;W_{i}^{k}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?W_{i}^{k&plus;1}=W_{i}^{k}-\eta&space;\frac{\partial&space;E}{\partial&space;W_{i}^{k}}" title="W_{i}^{k+1}=W_{i}^{k}-\eta \frac{\partial E}{\partial W_{i}^{k}}" /></a>
@@ -279,62 +276,26 @@ Once we have calculated the derivatives for all weights in the network ,we can s
 
 Figure 1.b (refer to source excel [here](../main/Training_Feedforward_Network.xlsx)) shows complete training process explained above . We can observe total error E_t reducing with each iteration and output values a_o1 and a_o2 coming closer to target values .
 
-   <p align="center" style="padding: 10px">
-    <img alt="Forwarding" src="https://github.com/krishnarevi/TSAI_END2.0_Session2/blob/main/plots/Training_Feedforward_Network.png?raw=true" width =2000>
-    <br>
-    <em style="color: grey">figure 1.b : Training of feed-forward neural network</em>
-
-  </p> 
+![Training_Feedforward_Network](README.assets/Training_Feedforward_Network.png)
 
 
 ## Effect of learning rate in training
 The learning rate controls how quickly the model is adapted to the problem. Smaller learning rates require more training epochs given the smaller changes made to the weights each update, whereas larger learning rates result in rapid changes and require fewer training epochs. A learning rate that is too large can cause the model to converge too quickly to a suboptimal solution, whereas a learning rate that is too small can cause the process to get stuck.
 Following figures shows effect in error graph learning rate changes from [0.1, 0.2, 0.5, 0.8, 1.0, 2.0] 
 
+<img src="README.assets/Error_graph_LR_0.1.png" alt="Error_graph_LR_0.1" style="zoom:50%;" />
 
-<table><tr>
-<td> 
-  <p align="center" style="padding: 10px">
-    <img alt="ER 0.1" src="https://github.com/krishnarevi/TSAI_END2.0_Session2/blob/main/plots/Error_graph_LR_0.1.png?raw=true" width="320">
-    <br>
-    <em style="color: grey">Error graph for learning rate 0.1</em>
-  </p> 
-</td>
-<td> 
-  <p align="center">
-    <img alt="ER 0.2" src="https://github.com/krishnarevi/TSAI_END2.0_Session2/blob/main/plots/Error_graph_LR_0.2.png?raw=true" width="320">
-    <br>
-    <em style="color: grey">Error graph for learning rate 0.2</em>
-  </p> 
-</td>
-<td> 
-  <p align="center">
-    <img alt="ER 0.5" src="https://github.com/krishnarevi/TSAI_END2.0_Session2/blob/main/plots/Error_graph_LR_0.5.png?raw=true" width="320">
-    <br>
-    <em style="color: grey">Error graph for learning rate 0.5</em>
-  </p> 
-</td>
-</tr></table>
-<table><tr>
-<td> 
-  <p align="center" style="padding: 10px">
-    <img alt="ER 0.8" src="https://github.com/krishnarevi/TSAI_END2.0_Session2/blob/main/plots/Error_graph_LR_0.8.png?raw=true" width="320">
-    <br>
-    <em style="color: grey">Error graph for learning rate 0.8</em>
-  </p> 
-</td>
-<td> 
-  <p align="center">
-    <img alt="ER 1.0" src="https://github.com/krishnarevi/TSAI_END2.0_Session2/blob/main/plots/Error_graph_LR_1.0.png?raw=true" width="320">
-    <br>
-    <em style="color: grey">Error graph for learning rate 1.0</em>
-  </p> 
-</td>
-<td> 
-  <p align="center">
-    <img alt="ER 2.0" src="https://github.com/krishnarevi/TSAI_END2.0_Session2/blob/main/plots/Error_graph_LR_2.0.png?raw=true" width="320">
-    <br>
-    <em style="color: grey">Error graph for learning rate 2.0</em>
-  </p> 
-</td>
-</tr></table>
+
+
+<img src="README.assets/Error_graph_LR_0.2.png" alt="Error_graph_LR_0.2" style="zoom: 50%;" /><img src="README.assets/Error_graph_LR_0.8.png" alt="Error_graph_LR_0.8" style="zoom:50%;" />
+
+
+
+
+
+<img src="README.assets/Error_graph_LR_0.5.png" alt="Error_graph_LR_0.5" style="zoom:50%;" />
+
+
+
+<img src="README.assets/Error_graph_LR_1.0.png" alt="Error_graph_LR_1.0" style="zoom: 50%;" /><img src="README.assets/Error_graph_LR_2.0.png" alt="Error_graph_LR_2.0" style="zoom:50%;" />
+
